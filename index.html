@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Técnico -->
+  <title>El Navegante — Tacos, Gorditas Mañaneras y Karaoke</title>
+  <meta name="description" content="Tacos y gorditas mañaneras con tortillas hechas a mano, 8 guisos caseros desde $25, tacos enojados y noches de karaoke con cerveza fría. ¡Pide por WhatsApp!" />
+  <meta name="keywords" content="el navegante, tacos mañaneros, gorditas mañaneras, tacos enojados, karaoke bar, tortillas hechas a mano, tacos caseros, taquería con karaoke" />
+  <meta name="author" content="El Navegante" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="restaurant" />
+  <meta property="og:title"       content="El Navegante — Tacos, Gorditas Mañaneras y Karaoke" />
+  <meta property="og:description" content="Tortillas hechas a mano, 8 guisos caseros desde $25, tacos enojados y noches de karaoke con cerveza bien fría. ¡Hechos con el sabor de siempre!" />
+  <meta property="og:url"         content="https://elnavegante.com" />
+  <meta property="og:locale"      content="es_MX" />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Lilita+One&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Favicon: mismo icono de la marca (guitarra + estrella) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='94' fill='%23C41E24' stroke='%23FFD966' stroke-width='8'/%3E%3Cg transform='rotate(-20 100 100)'%3E%3Crect x='94' y='18' width='12' height='78' rx='4' fill='%23FFF8ED'/%3E%3Crect x='87' y='6' width='26' height='16' rx='3' fill='%23FFF8ED'/%3E%3Cellipse cx='100' cy='133' rx='33' ry='29' fill='%23FFF8ED'/%3E%3Cellipse cx='100' cy='90' rx='22' ry='20' fill='%23FFF8ED'/%3E%3Ccircle cx='100' cy='128' r='9' fill='%232A0D0D'/%3E%3C/g%3E%3Cpolygon points='148,31 152.4,43.9 166.1,44.1 155.1,52.3 159.2,65.4 148,57.5 136.8,65.4 140.9,52.3 129.9,44.1 143.6,43.9' fill='%23FFD966' stroke='%237A1014' stroke-width='1.5'/%3E%3C/svg%3E" />
+</head>
+
+<body>
+
+<!-- ================================
+     LOGO DE MARCA (SVG inline) — guitarra + estrella, sin depender de archivos externos
+================================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="logo-mark" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="94" fill="var(--rojo)" stroke="var(--dorado-claro)" stroke-width="6"/>
+      <g transform="rotate(-20 100 100)">
+        <!-- mástil -->
+        <rect x="94" y="18" width="12" height="78" rx="4" fill="var(--crema)"/>
+        <!-- clavijero -->
+        <rect x="87" y="6" width="26" height="16" rx="3" fill="var(--crema)"/>
+        <!-- trastes -->
+        <rect x="94" y="34" width="12" height="2" fill="var(--cafe)"/>
+        <rect x="94" y="50" width="12" height="2" fill="var(--cafe)"/>
+        <rect x="94" y="66" width="12" height="2" fill="var(--cafe)"/>
+        <!-- cuerpo (dos óvalos = silueta de guitarra) -->
+        <ellipse cx="100" cy="133" rx="33" ry="29" fill="var(--crema)"/>
+        <ellipse cx="100" cy="90" rx="22" ry="20" fill="var(--crema)"/>
+        <!-- pastilla -->
+        <circle cx="100" cy="128" r="9" fill="var(--cafe)"/>
+        <!-- cuerdas -->
+        <line x1="96" y1="18" x2="96" y2="150" stroke="rgba(42,13,13,.3)" stroke-width="1.5"/>
+        <line x1="100" y1="18" x2="100" y2="155" stroke="rgba(42,13,13,.3)" stroke-width="1.5"/>
+        <line x1="104" y1="18" x2="104" y2="150" stroke="rgba(42,13,13,.3)" stroke-width="1.5"/>
+      </g>
+      <!-- estrella -->
+      <polygon points="148,31 152.4,43.9 166.1,44.1 155.1,52.3 159.2,65.4 148,57.5 136.8,65.4 140.9,52.3 129.9,44.1 143.6,43.9" fill="var(--dorado-claro)" stroke="var(--rojo-oscuro)" stroke-width="1.5"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ================================
+     LOADER
+================================ -->
+<div id="loader" aria-hidden="true">
+  <svg class="loader-logo" role="img" aria-label="El Navegante"><use href="#logo-mark"></use></svg>
+  <div class="loader-bar-wrap">
+    <div class="loader-bar" id="loader-bar"></div>
+  </div>
+  <p class="loader-text">Afinando el sabor…</p>
+</div>
+
+<!-- ================================
+     MENÚ MÓVIL
+================================ -->
+<div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+  <button id="menu-close" class="mobile-menu-close" aria-label="Cerrar menú">✕</button>
+  <a href="#menu">🌮 Menú</a>
+  <a href="#beneficios">🎸 Nuestra Onda</a>
+  <a href="#servicios">🎤 Karaoke</a>
+  <a href="#contacto">📍 Ubicación</a>
+</div>
+
+<!-- ================================
+     NAVBAR
+================================ -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Navegación principal">
+  <a href="#" class="navbar-brand" aria-label="Ir al inicio">
+    <svg role="img" aria-label="Logo El Navegante, taquería con karaoke"><use href="#logo-mark"></use></svg>
+    El Navegante
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#menu">Menú</a></li>
+    <li><a href="#beneficios">Nuestra Onda</a></li>
+    <li><a href="#servicios">Karaoke</a></li>
+    <li><a href="#contacto">Ubicación</a></li>
+    <li>
+      <a href="https://wa.me/528995072712?text=¡Hola!%20Quiero%20ordenar%20🌮"
+         target="_blank" rel="noopener" class="nav-cta">
+        ¡Pedir Ahora!
+      </a>
+    </li>
+  </ul>
+
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ================================
+     HERO — Full Screen
+================================ -->
+<header class="hero" id="inicio">
+
+  <!-- Marca de agua centrada -->
+  <div class="hero-watermark" aria-hidden="true">
+    <svg><use href="#logo-mark"></use></svg>
+  </div>
+
+  <!-- Gradiente radial sutil -->
+  <div class="hero-gradient" aria-hidden="true"></div>
+
+  <!-- Partículas JS -->
+  <div class="hero-particles" id="hero-particles" aria-hidden="true"></div>
+
+  <!-- Doodles decorativos -->
+  <span class="hero-doodle" style="top:12%; left:6%;"  aria-hidden="true">🎸</span>
+  <span class="hero-doodle" style="top:18%; right:8%;" aria-hidden="true">🎤</span>
+  <span class="hero-doodle" style="bottom:20%; left:5%;" aria-hidden="true">🌮</span>
+  <span class="hero-doodle" style="bottom:28%; right:6%;" aria-hidden="true">⭐</span>
+
+  <!-- Contenido centrado -->
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      Tacos de día · Karaoke de noche
+    </div>
+
+    <h1 class="hero-title">
+      <span class="word">¡El</span>
+      <span class="word gold">Sabor</span>
+      <span class="word">Que</span>
+      <span class="word">Te</span>
+      <span class="word">Lleva</span>
+      <span class="word gold">Lejos!</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Tacos y gorditas mañaneros con tortillas hechas a mano al momento,
+      8 guisos caseros desde $25, y noches de karaoke con cerveza bien fría. 🌮🎤
+    </p>
+
+    <div class="hero-ctas">
+      <a href="https://wa.me/528995072712?text=¡Hola!%20Quiero%20hacer%20mi%20pedido%20🌮"
+         target="_blank" rel="noopener" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" width="18" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 0C5.373 0 0 5.373 0 12c0 2.117.554 4.1 1.523 5.82L.057 23.862l6.197-1.427A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.626 0 11.999 0zm.001 21.818a9.801 9.801 0 01-4.99-1.366l-.358-.213-3.677.846.873-3.576-.233-.368A9.818 9.818 0 012.18 12C2.18 6.57 6.57 2.18 12 2.18c5.43 0 9.818 4.39 9.818 9.82 0 5.43-4.39 9.818-9.818 9.818z"/></svg>
+        Pedir por WhatsApp
+      </a>
+      <a href="#menu" class="btn btn-outline">Ver el Menú →</a>
+    </div>
+
+  </div>
+
+  <!-- Indicador de scroll -->
+  <div class="scroll-indicator" id="scroll-indicator">
+    <span>Desliza</span>
+    <div class="scroll-mouse"></div>
+  </div>
+
+</header>
+
+<!-- ================================
+     STATS BAR
+================================ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num" data-target="8">0</span>
+      <span class="stat-label">Guisos caseros diferentes</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="25" data-prefix="$">0</span>
+      <span class="stat-label">El taco o gordita mañanera</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="100" data-suffix="%">0</span>
+      <span class="stat-label">Tortillas hechas a mano</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="2">0</span>
+      <span class="stat-label">Experiencias en un solo lugar</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================================
+     MENÚ
+================================ -->
+<section class="section-menu" id="menu">
+  <div class="section-header">
+    <div class="section-tag">🌮 Lo que tenemos para ti</div>
+    <br/><br/>
+    <h2 class="section-title">Nuestro Menú</h2>
+  </div>
+
+  <!-- Filtros de categoría -->
+  <div class="menu-filters reveal fade-up">
+    <button class="menu-filter active" data-cat="all">🍽️ Todo</button>
+    <button class="menu-filter" data-cat="mananeros">🌅 Mañaneros</button>
+    <button class="menu-filter" data-cat="enojados">🌶️ Enojados</button>
+  </div>
+
+  <div class="menu-grid">
+
+    <!-- GUISOS MAÑANEROS -->
+    <article class="menu-card reveal fade-up" data-cat="mananeros">
+      <img src="https://images.unsplash.com/photo-1648437595587-e6a8b0cdf1f9?auto=format&fit=crop&w=800&q=80" alt="Taco de adobo casero estilo mañanero" class="menu-card-img" />
+      <div class="menu-card-body">
+        <span class="menu-card-label">Guiso Mañanero</span>
+        <h3 class="menu-card-name">Adobo</h3>
+        <p class="menu-card-desc">Carne bañada en un adobo rojo de chiles tatemados y especias, con ese picorcito que despierta hasta al más dormido.</p>
+        <div class="menu-card-price-row">
+          <span class="menu-card-price">$25</span>
+          <span class="menu-card-price-alt">También en gordita</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card reveal fade-up" data-cat="mananeros" style="transition-delay:.08s">
+      <img src="https://images.unsplash.com/photo-1760322327985-17e781f911f5?auto=format&fit=crop&w=800&q=80" alt="Taco de pierna al horno deshebrada" class="menu-card-img" />
+      <div class="menu-card-body">
+        <span class="menu-card-label">Guiso Mañanero</span>
+        <h3 class="menu-card-name">Pierna al Horno</h3>
+        <p class="menu-card-desc">Pierna de cerdo horneada hasta quedar tierna y jugosa, deshebrada al momento para tu taco o gordita.</p>
+        <div class="menu-card-price-row">
+          <span class="menu-card-price">$25</span>
+          <span class="menu-card-price-alt">También en gordita</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card reveal fade-up" data-cat="mananeros" style="transition-delay:.16s">
+      <img src="https://images.unsplash.com/photo-1719948515819-71265e1abb0d?auto=format&fit=crop&w=800&q=80" alt="Taco de picadillo casero" class="menu-card-img" />
+      <div class="menu-card-body">
+        <span class="menu-card-label">Guiso Mañanero</span>
+        <h3 class="menu-card-name">Picadillo</h3>
+        <p class="menu-card-desc">Guiso casero de carne con su toque de verduras, el sabor de siempre que sabe a comida hecha en casa.</p>
+        <div class="menu-card-price-row">
+          <span class="menu-card-price">$25</span>
+          <span class="menu-card-price-alt">También en gordita</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card reveal fade-up" data-cat="mananeros" style="transition-delay:.24s">
+      <img src="https://images.unsplash.com/photo-1622816932421-a2e2d85b9a53?auto=format&fit=crop&w=800&q=80" alt="Taco de chicharrón prensado en salsa" class="menu-card-img" />
+      <div class="menu-card-body">
+        <span class="menu-card-label">Guiso Mañanero</span>
+        <h3 class="menu-card-name">Chicharrón Prensado</h3>
+        <p class="menu-card-desc">Chicharrón prensado en salsa, suave, jugoso y con un sabor que se te queda en la memoria.</p>
+        <div class="menu-card-price-row">
+          <span class="menu-card-price">$25</span>
+          <span class="menu-card-price-alt">También en gordita</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card reveal fade-up" data-cat="mananeros" style="transition-delay:.08s">
+      <img src="https://images.unsplash.com/photo-1578880711837-b028df1bcd06?auto=format&fit=crop&w=800&q=80" alt="Taco de machacado con huevo, desayuno norteño" class="menu-card-img" />
+      <div class="menu-card-body">
+        <span class="menu-card-label">Guiso Mañanero</span>
+        <h3 class="menu-card-name">Machacado con Huevo</h3>
+        <p class="menu-card-desc">Carne seca deshebrada revuelta con huevo, el clásico norteño que todo buen mañanero debe probar.</p>
+        <div class="menu-card-price-row">
+          <span class="menu-card-price">$25</span>
+          <span class="menu-card-price-alt">También en gordita</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card reveal fade-up" data-cat="mananeros" style="transition-delay:.16s">
+      <img src="https://images.unsplash.com/photo-1622816657561-4adc2e4d6141?auto=format&fit=crop&w=800&q=80" alt="Taco de huevo en salsa casera" class="menu-card-img" />
+      <div class="menu-card-body">
+        <span class="menu-card-label">Guiso Mañanero</span>
+        <h3 class="menu-card-name">Huevo en Salsa</h3>
+        <p class="menu-card-desc">Huevo revuelto bañado en salsa casera, sencillo, sabroso y perfecto para arrancar el día con energía.</p>
+        <div class="menu-card-price-row">
+          <span class="menu-card-price">$25</span>
+          <span class="menu-card-price-alt">También en gordita</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card reveal fade-up" data-cat="mananeros" style="transition-delay:.24s">
+      <img src="https://images.unsplash.com/photo-1760322328049-91bb196d41d9?auto=format&fit=crop&w=800&q=80" alt="Taco de papa a la mexicana" class="menu-card-img" />
+      <div class="menu-card-body">
+        <span class="menu-card-label">Guiso Mañanero</span>
+        <h3 class="menu-card-name">Papa a la Mexicana</h3>
+        <p class="menu-card-desc">Papa picada con jitomate, cebolla y chile, la opción caserita que nunca falla.</p>
+        <div class="menu-card-price-row">
+          <span class="menu-card-price">$25</span>
+          <span class="menu-card-price-alt">También en gordita</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card reveal fade-up" data-cat="mananeros" style="transition-delay:.32s">
+      <img src="https://images.unsplash.com/photo-1519861155730-0b5fbf0dd889?auto=format&fit=crop&w=800&q=80" alt="Taco de carne asada al carbón" class="menu-card-img" />
+      <div class="menu-card-body">
+        <span class="menu-card-label">Guiso Mañanero</span>
+        <h3 class="menu-card-name">Carne Asada</h3>
+        <p class="menu-card-desc">Carne asada a las brasas, jugosa y con ese sabor ahumado que solo se logra al carbón.</p>
+        <div class="menu-card-price-row">
+          <span class="menu-card-price">$25</span>
+          <span class="menu-card-price-alt">También en gordita</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- TACOS ENOJADOS -->
+    <article class="menu-card reveal fade-up" data-cat="enojados" style="transition-delay:.08s">
+      <img src="https://images.unsplash.com/photo-1683062332605-4e1209d75346?auto=format&fit=crop&w=800&q=80" alt="Orden de tacos enojados dorados con queso y cebolla" class="menu-card-img" />
+      <div class="menu-card-body">
+        <span class="menu-card-label menu-card-label--dorado">Especialidad</span>
+        <h3 class="menu-card-name">Tacos Enojados</h3>
+        <p class="menu-card-desc">Crujientes por fuera, jugosos por dentro. Bañados en chile, cebolla, queso y limón. Elige tu relleno: papa, frijol, pierna deshebrada o chicharrón.</p>
+        <div class="menu-card-price-row">
+          <span class="menu-card-price">$50</span>
+          <span class="menu-card-price-alt">La orden completa</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ================================
+     BENEFICIOS
+================================ -->
+<section class="section-benefits" id="beneficios">
+  <div class="section-header">
+    <div class="section-tag section-tag-dark">⭐ ¿Por qué El Navegante?</div>
+    <br/><br/>
+    <h2 class="section-title section-title-dark">¡Aquí El Sabor No Es Cualquier Cosa!</h2>
+  </div>
+
+  <div class="benefits-grid">
+
+    <div class="benefit-card reveal scale-in">
+      <span class="benefit-icon">🫓</span>
+      <div class="benefit-title">Tortillas 100% a Mano</div>
+      <p class="benefit-desc">Amasadas y hechas al momento, calientitas como deben ser. Nada de bolsa ni microondas.</p>
+    </div>
+
+    <div class="benefit-card reveal scale-in" style="transition-delay:.08s">
+      <span class="benefit-icon">🌅</span>
+      <div class="benefit-title">Perfectos Para el Desayuno</div>
+      <p class="benefit-desc">Tacos mañaneros pensados para arrancar el día con toda la energía, antes del chambeo.</p>
+    </div>
+
+    <div class="benefit-card reveal scale-in" style="transition-delay:.16s">
+      <span class="benefit-icon">🔥</span>
+      <div class="benefit-title">8 Guisos Caseros</div>
+      <p class="benefit-desc">Variedad todos los días, cocinados con la sazón de siempre. Aquí no te aburres del menú.</p>
+    </div>
+
+    <div class="benefit-card reveal scale-in" style="transition-delay:.24s">
+      <span class="benefit-icon">🎤</span>
+      <div class="benefit-title">Karaoke Con Actitud</div>
+      <p class="benefit-desc">Cuando cae la noche, agarra el micrófono y suelta la voz. Aquí también se vive el show.</p>
+    </div>
+
+    <div class="benefit-card reveal scale-in" style="transition-delay:.32s">
+      <span class="benefit-icon">🍺</span>
+      <div class="benefit-title">Cerveza Bien Fría</div>
+      <p class="benefit-desc">Para acompañar tu antojo o cerrar la noche cantando a todo pulmón.</p>
+    </div>
+
+    <div class="benefit-card reveal scale-in" style="transition-delay:.4s">
+      <span class="benefit-icon">💰</span>
+      <div class="benefit-title">Precio Que Rockea</div>
+      <p class="benefit-desc">Antojo completo desde $25. Sabor de restaurante, precio de la esquina de tu casa.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================
+     SERVICIOS & CUÁNDO VISITARNOS
+================================ -->
+<section class="section-services" id="servicios">
+  <div class="section-header">
+    <div class="section-tag" style="background:#FFD966;color:#2A0D0D;">🎸 Cómo se vive El Navegante</div>
+    <br/><br/>
+    <h2 class="section-title">De Día Tacos, De Noche Rock</h2>
+  </div>
+
+  <div class="services-inner" style="max-width:1100px;margin:0 auto;">
+
+    <!-- Tarjetas de servicio -->
+    <div class="services-cards">
+
+      <div class="service-item reveal fade-left">
+        <span class="service-item-icon">🌮</span>
+        <div class="service-item-title">Tacos Mañaneros</div>
+        <p class="service-item-text">Tortillas hechas al momento y guisos recién preparados, para comer ahí mismo o pedir para llevar.</p>
+      </div>
+
+      <div class="service-item reveal fade-left" style="transition-delay:.1s">
+        <span class="service-item-icon">📱</span>
+        <div class="service-item-title">Pedido por WhatsApp</div>
+        <p class="service-item-text">Escríbenos a cualquiera de nuestras dos líneas y recoge tu pedido sin esperar.</p>
+      </div>
+
+      <div class="service-item reveal fade-left" style="transition-delay:.2s">
+        <span class="service-item-icon">🎤</span>
+        <div class="service-item-title">Noches de Karaoke</div>
+        <p class="service-item-text">Agarra el micrófono, canta tus rolas favoritas y pásatela increíble con los tuyos.</p>
+      </div>
+
+      <div class="service-item reveal fade-left" style="transition-delay:.3s">
+        <span class="service-item-icon">🍻</span>
+        <div class="service-item-title">Cervezas Bien Frías</div>
+        <p class="service-item-text">Tecate helada para acompañar tu antojo o brindar después de tu actuación estelar.</p>
+      </div>
+
+    </div>
+
+    <!-- Cuándo visitarnos -->
+    <div class="reveal fade-right">
+      <div class="section-tag" style="background:#FEF0C7;color:#2A0D0D;margin-bottom:20px;display:inline-block;">📅 ¿Cuándo venir?</div>
+      <div class="horarios-table sticker">
+        <div class="horarios-row header">
+          <span>Momento</span>
+          <span>Qué encuentras</span>
+        </div>
+        <div class="horarios-row">
+          <span class="dia">Mañanas</span>
+          <span class="hora">🌮 Tacos y gorditas</span>
+        </div>
+        <div class="horarios-row">
+          <span class="dia">Tardes y noches</span>
+          <span class="hora">🎤 Karaoke y cerveza</span>
+        </div>
+        <div class="horarios-row">
+          <span class="dia">Todos los días</span>
+          <span class="hora">📱 Pedidos por WhatsApp</span>
+        </div>
+        <div class="horarios-row" style="background:#FEF0C7; font-size:.85rem; color:#5C4640;">
+          <span>⚡ ¿Horario exacto hoy?</span>
+          <span>Pregúntanos por WhatsApp</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================
+     VIVE LA EXPERIENCIA
+================================ -->
+<section class="section-reviews" id="experiencia">
+  <div class="section-header">
+    <div class="section-tag section-tag-dark">🎸 Más que tacos</div>
+    <br/><br/>
+    <h2 class="section-title section-title-dark">Vive La Experiencia <em>El Navegante</em></h2>
+  </div>
+
+  <div class="reviews-grid">
+
+    <div class="review-card reveal">
+      <div class="review-stars">🎤</div>
+      <p class="review-text">"Todas las noches hay alguien listo para brillar. ¿Te avientas la primera rola del micrófono abierto?"</p>
+      <div class="review-author">
+        <div class="review-avatar">🎶</div>
+        <div>
+          <div class="review-name">Micrófono Abierto</div>
+          <div class="review-source">Noches de Karaoke</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal" style="transition-delay:.1s">
+      <div class="review-stars">🍻</div>
+      <p class="review-text">"Cerveza bien fría, buena música y la mejor compañía para cerrar el día como se debe."</p>
+      <div class="review-author">
+        <div class="review-avatar">🧊</div>
+        <div>
+          <div class="review-name">Ambiente Sabrosón</div>
+          <div class="review-source">Cerveza & Buena Vibra</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal" style="transition-delay:.2s">
+      <div class="review-stars">🌮</div>
+      <p class="review-text">"Guisos caseros hechos con la misma sazón de siempre. Receta que no cambia, sabor que no falla."</p>
+      <div class="review-author">
+        <div class="review-avatar">👵</div>
+        <div>
+          <div class="review-name">Sabor Que Reconforta</div>
+          <div class="review-source">Guisos Caseros</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal" style="transition-delay:.3s">
+      <div class="review-stars">🤘</div>
+      <p class="review-text">"Familia, cuates o pareja, aquí todos encuentran su lugar, su taco y su rola favorita."</p>
+      <div class="review-author">
+        <div class="review-avatar">👥</div>
+        <div>
+          <div class="review-name">Para Toda La Banda</div>
+          <div class="review-source">Ambiente Familiar</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================
+     CONTACTO & MAPA
+================================ -->
+<section class="section-contact" id="contacto">
+  <div class="section-header">
+    <div class="section-tag">📍 Encuéntranos</div>
+    <br/><br/>
+    <h2 class="section-title">Ubicación & Contacto</h2>
+  </div>
+
+  <div class="contact-inner">
+
+    <!-- Formulario -->
+    <div>
+      <form class="contact-form sticker-lg" id="contact-form">
+        <h3 class="form-title">¡Mándanos un Mensaje! 🎸</h3>
+
+        <div class="form-group">
+          <label class="form-label" for="nombre">Nombre</label>
+          <input class="form-input" type="text" id="nombre" name="nombre" placeholder="¿Cómo te llamas?" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="telefono">Teléfono / WhatsApp</label>
+          <input class="form-input" type="tel" id="telefono" name="telefono" placeholder="Tu número de contacto" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="asunto">Asunto</label>
+          <input class="form-input" type="text" id="asunto" name="asunto" placeholder="Ej. Cotización para evento o karaoke" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="mensaje">Mensaje</label>
+          <textarea class="form-textarea" id="mensaje" name="mensaje" placeholder="Cuéntanos en qué te podemos ayudar..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width:100%; justify-content:center; font-size:1rem;">
+          Enviar por WhatsApp 🚀
+        </button>
+      </form>
+    </div>
+
+    <!-- Info + Mapa -->
+    <div style="display:flex; flex-direction:column; gap:24px;">
+
+      <!-- Info de contacto -->
+      <div class="contact-info">
+
+        <div class="contact-info-item sticker">
+          <span class="contact-info-icon">📍</span>
+          <div class="contact-info-text">
+            <div class="contact-info-label">Dirección</div>
+            Escríbenos por WhatsApp y te compartimos la ubicación exacta para llegar sin perderte.
+          </div>
+        </div>
+
+        <div class="contact-info-item sticker">
+          <span class="contact-info-icon">📱</span>
+          <div class="contact-info-text">
+            <div class="contact-info-label">WhatsApp / Pedidos</div>
+            <a href="https://wa.me/528995072712" target="_blank" rel="noopener" style="color:var(--rojo); font-weight:700; text-decoration:none;">
+              899 507 2712
+            </a>
+            &nbsp;·&nbsp;
+            <a href="https://wa.me/528994138821" target="_blank" rel="noopener" style="color:var(--rojo); font-weight:700; text-decoration:none;">
+              899 413 8821
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-info-item sticker">
+          <span class="contact-info-icon">🕐</span>
+          <div class="contact-info-text">
+            <div class="contact-info-label">Cuándo venir</div>
+            Mañanas: tacos y gorditas · Tardes/noches: karaoke y cerveza. ¿Horario exacto? Pregúntanos por WhatsApp.
+          </div>
+        </div>
+
+        <div class="contact-info-item sticker">
+          <span class="contact-info-icon">🎉</span>
+          <div class="contact-info-text">
+            <div class="contact-info-label">Eventos y grupos</div>
+            ¿Cumpleaños o reunión? Escríbenos y armamos tu paquete de tacos + karaoke.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Mapa (pendiente de ubicación real) -->
+      <div class="contact-map sticker-lg contact-map-placeholder">
+        <span class="map-placeholder-icon">📍</span>
+        <p class="map-placeholder-text">Comparte tu ubicación de Google Maps y la integramos aquí para que tus clientes lleguen directito, sin perderse.</p>
+        <a href="https://wa.me/528995072712?text=¡Hola!%20Quiero%20saber%20cómo%20llegar%20a%20El%20Navegante"
+           target="_blank" rel="noopener" class="btn btn-primary">
+          Pregúntanos Cómo Llegar
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     FOOTER
+================================ -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand-wrap">
+      <svg role="img" aria-label="Logo El Navegante"><use href="#logo-mark"></use></svg>
+      <div>
+        <div class="footer-brand">El Navegante</div>
+        <p class="footer-tagline">Tacos de día. Rock de noche. El sabor de siempre.</p>
+      </div>
+    </div>
+
+    <div class="footer-center">
+      <ul class="footer-links">
+        <li><a href="#menu">Menú</a></li>
+        <li><a href="#beneficios">Nuestra Onda</a></li>
+        <li><a href="#servicios">Karaoke</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="footer-socials">
+        <a href="https://wa.me/528995072712" target="_blank" rel="noopener" class="footer-social-icon footer-social-wa" aria-label="WhatsApp línea 1">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 0C5.373 0 0 5.373 0 12c0 2.117.554 4.1 1.523 5.82L.057 23.862l6.197-1.427A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.626 0 11.999 0zm.001 21.818a9.801 9.801 0 01-4.99-1.366l-.358-.213-3.677.846.873-3.576-.233-.368A9.818 9.818 0 012.18 12C2.18 6.57 6.57 2.18 12 2.18c5.43 0 9.818 4.39 9.818 9.82 0 5.43-4.39 9.818-9.818 9.818z"/></svg>
+        </a>
+        <a href="https://wa.me/528994138821" target="_blank" rel="noopener" class="footer-social-icon footer-social-wa" aria-label="WhatsApp línea 2">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 0C5.373 0 0 5.373 0 12c0 2.117.554 4.1 1.523 5.82L.057 23.862l6.197-1.427A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.626 0 11.999 0zm.001 21.818a9.801 9.801 0 01-4.99-1.366l-.358-.213-3.677.846.873-3.576-.233-.368A9.818 9.818 0 012.18 12C2.18 6.57 6.57 2.18 12 2.18c5.43 0 9.818 4.39 9.818 9.82 0 5.43-4.39 9.818-9.818 9.818z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <p class="footer-copy">© 2026 El Navegante. Todos los derechos reservados. Hecho con 🌮🎸 y mucho sabor.</p>
+  </div>
+</footer>
+
+<!-- ================================
+     BOTÓN WHATSAPP FLOTANTE
+================================ -->
+<a
+  href="https://wa.me/528995072712?text=¡Hola!%20Quiero%20hacer%20mi%20pedido%20en%20El%20Navegante%20🌮"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="wa-float"
+  aria-label="Contactar por WhatsApp"
+>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M11.999 0C5.373 0 0 5.373 0 12c0 2.117.554 4.1 1.523 5.82L.057 23.862l6.197-1.427A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.626 0 11.999 0zm.001 21.818a9.801 9.801 0 01-4.99-1.366l-.358-.213-3.677.846.873-3.576-.233-.368A9.818 9.818 0 012.18 12C2.18 6.57 6.57 2.18 12 2.18c5.43 0 9.818 4.39 9.818 9.82 0 5.43-4.39 9.818-9.818 9.818z"/>
+  </svg>
+  ¡Pedir Ahora!
+</a>
+
+<!-- Anime.js desde CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<!-- Lógica & animaciones -->
+<script src="main.js"></script>
+
+</body>
+</html>
